@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1478983154 source:c:\users\anderson.usuário\documents\github\projeto-redes\threads-c\exemplo.c
+	<stdio.h>
+	<pthread.h>
+	<stdlib.h>
+
+1478983901 source:c:\users\anderson.usuário\documents\github\projeto-redes\threads-c\main.c
+	<stdio.h>
+	<stdlib.h>
+	<pthread.h>
+
