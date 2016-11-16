@@ -2,26 +2,59 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+//Vetor global, isso facilitará a manipulação desse vetor
+unsigned int* memoria_comp;
 
-void* foo(void){
-    char* mensagem = malloc(20 * sizeof(char));
+unsigned int* pos_livre(void* argumento){
+    int* tam_memoria = (int*) argumento;
 
-    strcpy(mensagem ,"hello world");;
+    int i;
+    for(i=0; i<*tam_memoria; i++){
+        if(memoria_comp[*tam_memoria] == 0){
+            return memoria_comp[*tam_memoria];
+        }
+    }
 
-    pthread_exit((void*)mensagem);
+    return NULL;
 }
 
-int main(int argc, char** argv)
+void* produzir(unsigned int* num_memoria){
+
+    pthread_exit(NULL);
+}
+
+void* consumir(){
+
+}
+
+int main(int argc, char* argv[])
 {
-    pthread_t t1;
+    unsigned int tam_memoria;
+    unsigned int qtd_produtores;
+    unsigned int qtd_consumidores;
 
-    char* b;
+    printf("Tamanho do vetor: ");
+    scanf("%d", &tam_memoria);
 
-    pthread_create(&t1, NULL, foo, NULL );
+    printf("Quantidade de Threads Produtoras: ");
+    scanf("%d", &qtd_produtores);
 
-    pthread_join(t1, (void**)&b);
+    printf("Quantidade de Threads Consumidoras: ");
+    scanf("%d", &qtd_consumidores);
 
-    printf(b);
+    //"calloc" aloca memoria para uma variavel e inicializa todas com zero
+    memoria_comp = (unsigned int) calloc(tam_memoria, sizeof(unsigned int));
 
+
+    pthread_t* produtor     = (pthread_t) malloc(qtd_produtores * sizeof(pthread_t));
+    pthread_t* consumidor   = (pthread_t) malloc(qtd_produtores * sizeof(pthread_t));
+
+    int i;
+    for(i=0; i<qtd_produtores;i++){
+        pthread_create(&produtor[i], NULL, produzir, (void*)&tam_memoria);
+    }
+
+
+    system("pause");
     return 1;
 }
