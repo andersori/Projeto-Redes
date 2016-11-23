@@ -1,11 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <semaphore.h>
 #include <time.h>
 
+#define TRUE 1
+#define FALSE 0
+
 #define MAX_NUM_RETIRADOS 10000
+
 int* MEMORIA_COMP;
 int NUM_RETIRADOS = 0;
+typedef short bool;
+
+bool is_primo(int num){
+    int i;
+    for(i=0 ; i < (num / 2 )+ 1; i++){
+        if(num % 2 == 0)
+            return FALSE;
+    }
+
+    return TRUE;
+}
 
 int pos_livre(int tam_memoria){
     int i;
@@ -92,7 +108,7 @@ int main(int argc, char* argv[])
     //Variavel para os "for"
     int i;
 
-    //Criando as threads -> associando um procedimento a uma thread
+    //Criando as threads -> associando um função a uma thread
     for(i=0; i<qtd_produtores;i++){
         pthread_create(&produtor[i], NULL, produzir, (void*)tam_memoria);
     }
@@ -101,7 +117,7 @@ int main(int argc, char* argv[])
     }
 
 
-    //Criando os joins -> executando as threads
+    //Executando as threads
     for(i=0; i<qtd_produtores;i++){
         pthread_join(produtor[i], NULL);
     }
@@ -109,7 +125,7 @@ int main(int argc, char* argv[])
         pthread_join(consumidor[i], NULL);
     }
 
-
+    //teste
 
     system("pause");
     return 1;

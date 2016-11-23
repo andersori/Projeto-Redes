@@ -4,10 +4,11 @@
 	<pthread.h>
 	<stdlib.h>
 
-1479395841 source:c:\users\anderson.usuário\documents\github\projeto-redes\threads-c\main.c
+1479863832 source:c:\users\anderson.usuário\documents\github\projeto-redes\threads-c\main.c
 	<stdio.h>
 	<stdlib.h>
 	<pthread.h>
+	<semaphore.h>
 	<time.h>
 
 1479326522 source:c:\users\andreza\documents\github\projeto-redes\threads-c\exemplo.c
