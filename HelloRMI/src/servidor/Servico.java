@@ -12,8 +12,9 @@ import java.rmi.RemoteException;
  *
  * @author Anderson
  */
+//Inteface utilizada pelo servidor e pelo cliente
 public interface Servico extends Remote{
-    public int logaritimo() throws RemoteException;
-    public int potencia() throws RemoteException;
+    public double logaritimo(double num) throws RemoteException;
+    public double raiz(double num) throws RemoteException;
     public int soma(int a, int b) throws RemoteException;  
 }

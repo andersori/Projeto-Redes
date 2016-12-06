@@ -12,6 +12,7 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author Anderson
  */
+//Implementação dos metosdos da interface
 public class ServicoImplementado extends UnicastRemoteObject implements Servico{
 
     public ServicoImplementado() throws RemoteException{
@@ -19,13 +20,13 @@ public class ServicoImplementado extends UnicastRemoteObject implements Servico{
     }
 
     @Override
-    public int logaritimo() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double logaritimo(double num) throws RemoteException {
+        return Math.log(num);
     }
 
     @Override
-    public int potencia() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double raiz(double num) throws RemoteException {
+        return Math.sqrt(num);
     }
 
     @Override

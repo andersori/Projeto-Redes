@@ -25,8 +25,12 @@ public class MainServidor {
     public static void main(String[] args) {
         
         try {
-            LocateRegistry.createRegistry(5821);
-            Naming.bind("rmi://localhost:5821/coisa", new ServicoImplementado());
+            //Cria e exporta uma instância de registro no host local que aceita solicitações na porta especificada.
+            LocateRegistry.createRegistry(52101);
+            
+            //Liga o nome especificado a um objeto remoto.
+            Naming.bind("rmi://localhost:52101/coisa", new ServicoImplementado());
+            
             System.out.println("Servidor funcionando.");
             
         } catch (AlreadyBoundException | MalformedURLException | RemoteException ex) {

@@ -6,8 +6,7 @@
 package cliente;
 
 import java.util.Random;
-
-
+import java.util.Scanner;
 /**
  *
  * @author Anderson
@@ -19,35 +18,30 @@ public class MainCliente {
      */
     public static void main(String[] args) {
             
-        int vetor[] = new int[108];
-        Random r = new Random();
+        int vetor[] =  new int[108];
+        int n;
         
+        Random r = new Random();
         for(int i = 0; i < 108; i++){
-            vetor[i] = r.nextInt() * 1021;
+            int valor = r.nextInt(150);
+            vetor[i] = valor;
         }
         
-        int n = 8;
+        System.out.println("Qantidade de Threads");
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
         
-        int intervalo = 108 / n;
-        int resto = (108 % n) * n;
         int inicio = 0;
-        int fim = intervalo;
+        int fim = 0;
+        int intervalo = 108 / n;
+        //Falta definir esse intervalo
         
+        long tempoInicial = System.currentTimeMillis();
         for(int i = 0; i < n; i++){
             Thread t = new Thread(new Processo(vetor, inicio, fim));
-            inicio = fim;
-            
-            if( i == n -1){
-                fim = fim + intervalo + resto;
-            }
-            else{
-                fim = fim + intervalo;
-            }
-            
-            
             t.start();
         }
-
+        System.out.println("Tempo decorrido: " + (System.currentTimeMillis() - tempoInicial) + " milisegundos.");
     }
     
 }
